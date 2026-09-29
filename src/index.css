@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-primary: #4F46E5;
+    --brand-primary-hover: #4338CA;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+  }
+}
+
+/* Custom crisp scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.6);
+}
+
+/* Glass & subtle card effects */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ============================
+   MEETMIND AI DESIGN SYSTEM & MOTION
+   ============================ */
+
+/* Neural memory pulse */
+@keyframes neural-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+  }
+  50% {
+    box-shadow: 0 0 20px 4px rgba(99, 102, 241, 0.18);
+  }
+}
+
+/* Floating particles micro-motion */
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translateY(-6px) translateX(4px);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-10px) translateX(-3px);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateY(-4px) translateX(-6px);
+    opacity: 0.6;
+  }
+}
+
+/* Staggered reveal for briefings and cards */
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth subtle orb rotation */
+@keyframes orb-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Shimmer highlight for AI generation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-neural-pulse {
+  animation: neural-pulse 3s ease-in-out infinite;
+}
+
+.animate-float-particle {
+  animation: float-particle 4s ease-in-out infinite;
+}
+
+.animate-card-in {
+  animation: card-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2.2s infinite;
+}
+
+/* 3D Depth Card Utilities */
+.card-depth-subtle {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.2s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-depth-subtle:hover {
+  transform: translateY(-2px) scale3d(1.002, 1.002, 1.002);
+}
+
+/* ========================================================================= */
+/* LUXURY SLOW DOWN-TO-UP ENTRANCE ANIMATIONS */
+/* ========================================================================= */
+@keyframes page-rise-slow {
+  0% {
+    opacity: 0;
+    transform: translateY(45px);
+    filter: blur(5px);
+  }
+  60% {
+    filter: blur(0.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-rise-slow {
+  animation: page-rise-slow 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity, filter;
+}
+
+.animate-rise-delayed-1 {
+  animation: page-rise-slow 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  will-change: transform, opacity, filter;
+}
+
+.animate-rise-delayed-2 {
+  animation: page-rise-slow 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  will-change: transform, opacity, filter;
+}
+
+.animate-rise-delayed-3 {
+  animation: page-rise-slow 1.25s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+  will-change: transform, opacity, filter;
+}
+
+/* Global Page Transition: Slow, smooth down-to-up motion */
+@keyframes page-transition {
+  0% {
+    opacity: 0;
+    transform: translateY(35px);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.page-transition {
+  animation: page-transition 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform, filter;
+}
+
+/* Floating animation for memory nodes */
+@keyframes float {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-5px);
+  }
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card-depth-subtle:hover {
+    transform: none !important;
+  }
+}
