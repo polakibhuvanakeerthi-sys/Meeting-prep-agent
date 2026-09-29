@@ -4,4 +4,9 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-})
+  server: {
+    watch: {
+      ignored: ['**/venv/**', '**/.edge_temp_*/**', '**/*.log']
+    }
+  }
+});
